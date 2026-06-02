@@ -14,16 +14,14 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: '8.12' # جلب إصدار 8 المستقر لمنع الكراش
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Build Mod with Gradle
-        run: gradle build
+        run: ./gradlew build
 
       - name: Upload Mod Jar
         uses: actions/upload-artifact@v4
         with:
           name: redstone-meter-mod
-          path: build/libs/*-1.0.0.jar
+          path: build/libs/*.jar
