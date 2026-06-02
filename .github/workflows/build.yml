@@ -8,15 +8,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Java 25 manually
-        run: |
-          JDK_URL=$(curl -s https://jdk.java.net/25/ | grep -oP 'https://download.java.net[^"]+linux-x64_bin\.tar\.gz' | head -1)
-          echo "Downloading: $JDK_URL"
-          wget -q "$JDK_URL" -O jdk25.tar.gz
-          mkdir -p $HOME/jdk25
-          tar -xzf jdk25.tar.gz -C $HOME/jdk25 --strip-components=1
-          echo "JAVA_HOME=$HOME/jdk25" >> $GITHUB_ENV
-          echo "$HOME/jdk25/bin" >> $GITHUB_PATH
+      - name: Setup Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'microsoft'
+          java-version: '25'
 
       - name: Verify Java version
         run: java -version
