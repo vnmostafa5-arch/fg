@@ -8,11 +8,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Java 25 (Early Access)
-        uses: oracle-actions/setup-java@v1
-        with:
-          website: jdk.java.net
-          release: 25
+      - name: Install Java 25 manually
+        run: |
+          wget -q https://download.java.net/java/early_access/jdk25/latest/GPL/openjdk-25-ea+latest_linux-x64_bin.tar.gz -O jdk25.tar.gz
+          mkdir -p $HOME/jdk25
+          tar -xzf jdk25.tar.gz -C $HOME/jdk25 --strip-components=1
+          echo "JAVA_HOME=$HOME/jdk25" >> $GITHUB_ENV
+          echo "$HOME/jdk25/bin" >> $GITHUB_PATH
+
+      - name: Verify Java version
+        run: java -version
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
