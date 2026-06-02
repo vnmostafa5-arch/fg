@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "redstonemeter",
+  "version": "${version}",
+  "name": "Redstone Meter Client",
+  "description": "Displays redstone power levels on screen.",
+  "authors": ["You"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/redstonemeter/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "com.example.redstonemeter.RedstoneMeterClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.26.2",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
