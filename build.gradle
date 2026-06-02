@@ -1,13 +1,15 @@
 plugins {
-    id 'fabric-loom' version '1.8-SNAPSHOT'
+    id 'fabric-loom' version '1.9-SNAPSHOT'
     id 'maven-publish'
 }
+
 version = project.mod_version
 group = project.maven_group
 base { archivesName = project.archives_base_name }
 
-repositories { 
-    mavenCentral() 
+repositories {
+    mavenCentral()
+    maven { url "https://maven.fabricmc.net/" }
 }
 
 dependencies {
