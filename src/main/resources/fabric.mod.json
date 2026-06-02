@@ -14,10 +14,10 @@
       "com.example.redstonemeter.RedstoneMeterClient"
     ]
   },
-"depends": {
+  "depends": {
     "fabricloader": ">=0.16.9",
     "minecraft": "*",
     "java": ">=21",
     "fabric-api": "*"
-}
+  }
 }
